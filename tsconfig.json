@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "Node16",
+        "moduleResolution": "node16",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "paths": {
+            "~/*": ["./src/*"],
+            "_/*": ["./*"]
+        },
+        "baseUrl": ".",
+        "outDir": "./build",
+        "rootDir": "./src"
+    },
+    "include": ["src/index.ts", "src/scripts/*"],
+    "exclude": ["node_modules"]
+}
