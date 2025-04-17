@@ -22,12 +22,38 @@ yarn build
 yarn auth
 ```
 
+### Configure Spotify Credentials
+
+#### Create the `.env` File
+
+**Linux/macOS:**
+
+```bash
+cp .env.example .env
+```
+
+**Windows:**
+
+```cmd
+copy .env.example .env
+```
+
+#### Add Your Spotify API Credentials
+
+   Open the `.env` file in a text editor and replace `your_spotify_client_id` and `your_spotify_client_secret` with the actual values from your [Spotify Developer Dashboard](https://developer.spotify.com/dashboard).
+
+   ```env
+   SPOTIFY_CLIENT_ID=your_spotify_client_id
+   SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+   ```
+
+
 
 ### Configure Claude Desktop
 
 #### Create the Configuration File
 
-**macOS:**
+**Linux/macOS:**
 
 ```bash
 touch ~/Library/Application\ Support/Claude/claude_desktop_config.json
