@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 interface TOKEN_JSON extends JSON {
   access_token: string
@@ -10,7 +11,7 @@ interface TOKEN_JSON extends JSON {
 
 export default {
   redirect_uri: `http://127.0.0.1:8888/callback`,
-  token_json_path: path.resolve(process.argv[1], '../../token.json'),
+  token_json_path: path.resolve(fileURLToPath(import.meta.url), '../../../token.json'),
   scopes: [
     'user-read-private',
     'user-read-email',

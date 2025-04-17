@@ -4,10 +4,11 @@ import 'dotenv/config';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import tools from '~/tools/spotify/index.js';
 
 function getManifest() {
-  const manifestPath = path.resolve(process.argv[1], '../../package.json');
+  const manifestPath = path.resolve(fileURLToPath(import.meta.url), '../../package.json');
   const manifestFile = readFileSync(manifestPath, 'utf8');
   return JSON.parse(manifestFile);
 }
