@@ -10,12 +10,14 @@
         "skipLibCheck": true,
         "paths": {
             "~/*": ["./src/*"],
-            "_/*": ["./*"]
+            "auth/*": ["./src/auth/*"],
+            "server/*": ["./src/server/*"],
+            "client/*": ["./src/client/*"]
         },
         "baseUrl": ".",
         "outDir": "./build",
         "rootDir": "./src"
     },
-    "include": ["src/index.ts", "src/scripts/*"],
+    "include": ["./src/server/index.ts", "./src/client/index.ts", "./src/scripts/*"],
     "exclude": ["node_modules"]
 }

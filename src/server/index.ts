@@ -2,22 +2,12 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import 'dotenv/config';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
-import { readFileSync } from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import tools from '~/tools/spotify/index.js';
-
-function getManifest() {
-  const manifestPath = path.resolve(fileURLToPath(import.meta.url), '../../package.json');
-  const manifestFile = readFileSync(manifestPath, 'utf8');
-  return JSON.parse(manifestFile);
-}
-
-const manifest = getManifest();
+import tools from 'server/tools/index.js';
+import manifest from '~/manifest.js';
 
 const mcpServer = new Server(
   {
-    name: manifest.name,
+    name: `${manifest.name}-server`,
     version: manifest.version,
   },
   {
@@ -27,11 +17,15 @@ const mcpServer = new Server(
   },
 );
 
+// List Tools
+
 mcpServer.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: tools.map(({ schema }) => schema),
   };
 });
+
+// Call Tool
 
 mcpServer.setRequestHandler(CallToolRequestSchema, async (request) => {
   const tool = tools.find(({ schema }) => request.params.name === schema.name);

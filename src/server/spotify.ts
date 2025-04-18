@@ -1,7 +1,7 @@
 import { SpotifyApi } from '@spotify/web-api-ts-sdk';
-import AuthClient from '~/auth/authClient.js';
+import AuthClient from 'auth/authClient.js';
 
-const t = SpotifyApi.withAccessToken(
+export default SpotifyApi.withAccessToken(
   process.env.SPOTIFY_CLIENT_ID!,
   AuthClient.tokenJson,
   {
@@ -25,7 +25,3 @@ const t = SpotifyApi.withAccessToken(
     },
   },
 );
-
-t.authenticate();
-
-export default t;

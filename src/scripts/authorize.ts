@@ -1,11 +1,9 @@
-import dotenv from 'dotenv';
+import AuthClient from 'auth/authClient.js';
 import http from 'http';
 import open from 'open';
 import querystring from 'querystring';
 import { URL } from 'url';
-import AuthClient from '~/auth/authClient.js';
-
-dotenv.config();
+import 'dotenv/config';
 
 function generateRandomString(length: number) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
